@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container{
+      background-color: indianred;
+      
+    }
+    .box{
+      background-color: yellow;
+      padding: 3px;
+      height: 50px;
+      width: 50px;
+      margin: 5px;
+      display: inline-table;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="box" ></div>
+  </div>
+  <button id="addbox">add box</button>
+
+
+  <script>
+    var dom = document.getElementById('addbox')
+    var container = document.getElementsByClassName('container')[0]
+    console.log(container);
+    
+    function addbox() {
+      console.log('clicked');
+      var olddata = container.innerHTML
+      var color = ["red", "black", "pink", 'white', "green", "blue"]
+      var nu = Math.floor(Math.random() * 3) + 1;
+      // dom.innerHTML = `<h1>hello world</h1>
+        const element = color[nu];
+        console.log(nu);
+        container.innerHTML = `${olddata}<div class="box" style="background-color: ${element}"></div> `
+      
+    }
+    dom.addEventListener('click',addbox )
+  </script>
+</body>
+</html>
