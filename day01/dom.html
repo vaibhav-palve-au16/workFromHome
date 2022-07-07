@@ -25,7 +25,18 @@
     <div class="box" ></div>
   </div>
   <button id="addbox">add box</button>
+  <button id="stylebtn">style box</button>
+  <script>
+    var stylebtn = document.getElementById("stylebtn")
+    var container = document.getElementsByClassName('container')[0]
+    stylebtn.addEventListener('click', function () {
+      container.style.backgroundColor = 'red'
+      container.style.border = '2px solid blue'
 
+    })
+
+
+  </script>
    
 
   <script>
