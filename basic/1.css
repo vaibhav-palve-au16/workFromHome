@@ -1,0 +1,34 @@
+body{
+    background-color:rgb(196, 199, 200);
+}
+table {
+    text-align: center;
+    border-style: double;
+    border-color: chartreuse;
+    border:2 solid black;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+h3 {
+    text-size-adjust: auto;
+    text-align: center;
+    background-color: rgb(213, 64, 23);
+    
+}
+
+th {
+    background-color: #aa0404;
+    color: white;
+}
+
+td {
+    border: 4;
+    text-align: center;
+    border-style: solid;
+    background-color: #fd020280;
+}
+
+tr:hover {
+    background-color: coral;
+}
