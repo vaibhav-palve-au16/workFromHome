@@ -7,13 +7,18 @@
   <title>Document</title>
 </head>
 <body>
+  <div id="my">0</div>
   <button onclick="handlevent()" onmouseover=""> click me!!</button>
   <script>
+    let dom = document.getElementById("my")
     var count = 0
     function handlevent() {
       count++;
-      console.log('heree we go!!!!!'+ count);
+      // console.log('heree we go!!!!!'+ count);
+      let data  = document.getElementById("my")
+      data.innerHTML = `<p>${count}</p>`
     }
+    dom.addEventListener("text",handlevent)
   </script>
   
 </body>
