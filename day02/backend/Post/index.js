@@ -1,45 +1,45 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require("cors");
-const { randomBytes } = require('crypto')
-const axios = require('axios')
+const { randomBytes } = require('crypto');
+const cors = require('cors');
+const axios = require('axios');
 
 const app = express();
-let PORT = 4000
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({}))
-app.use(cors())
-let posts = {}
-app.get("/posts", (req, res) => {
-    res.send(posts)
-})
+app.use(bodyParser.json());
+app.use(cors());
 
-app.post("/posts", async (req, res) => {
-    try {
-        let { title } = req.body
-        const id = randomBytes(4).toString('hex');
-        posts[id] = {
-            "id": id,
-            "title": title
-        }
-        await axios.post('http://localhost:4005/event', {
-            type:"PostCreated",
-            data:{id, title}
-        })
-        console.log(posts);
-        res.status(201).send(posts)
-    } catch (error) {
-        res.send(error)
-    }
-})
+const posts = {};
 
-app.post('/events', async(req, res)=>{
-    let{type, data} = req.body
-    console.log(data);
-    res.end()
+app.get('/posts', (req, res) => {
+  return res.send(posts);
+});
 
-})
+app.post('/posts', async (req, res) => {
+  const id = randomBytes(4).toString('hex');
+  const { title } = req.body;
 
-app.listen(PORT, (req, res) => {
-    console.log("port running on  Posts " + PORT)
-})
+  posts[id] = {
+    id,
+    title,
+  };
+
+  await axios.post('http://localhost:4005/events', {
+    type: 'PostCreated',
+    data: {
+      id,
+      title,
+    },
+  });
+
+  return res.status(201).send(posts[id]);
+});
+
+app.post('/events', (req, res) => {
+  console.log('Event Received', req.body.type);
+
+  return res.send({});
+});
+
+app.listen(4000, () => {
+  console.log('Listening on 4000');
+});
