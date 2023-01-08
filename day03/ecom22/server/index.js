@@ -5,6 +5,7 @@ const cors = require('cors');
 const morgan = require("morgan")
 const { connect } = require('./connection/connection');
 const route = require("./router/auth");
+const categoryRouter = require('./router/category')
 
 const app = express()
 
@@ -14,6 +15,8 @@ app.use(cors())
 
 app.use(morgan("dev"))
 
+
+app.use('/', categoryRouter)
 app.use('/user', route)
 
 app.get('/', (req, res) => {
