@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "html-to-pdf": "^0.1.11",
+    "html5-to-pdf": "^4.0.1"
+  }
+}
